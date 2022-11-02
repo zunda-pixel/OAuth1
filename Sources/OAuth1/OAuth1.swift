@@ -11,21 +11,21 @@ import Foundation
 #endif
 
 public struct OAuth1 {
-  private let accessToken: String
-  private let accessSecretToken: String
+  public let accessToken: String
+  public let accessSecretToken: String
   
-  private let oAuthToken: String?
-  private let oAuthSecretToken: String
+  public let oAuthToken: String?
+  public let oAuthSecretToken: String
   
-  let url: URL
-  let httpMethod: String
-  let queries: [String: String]
+  public let url: URL
+  public let httpMethod: String
+  public let queries: [String: String]
   
-  private let oAuthVersion = "1.0"
-  private let signatureMethod = "HMAC-SHA1"
+  public let oAuthVersion = "1.0"
+  public let signatureMethod = "HMAC-SHA1"
   
-  private let nonce = UUID().uuidString
-  private var timestamp: String { String(Int(Date().timeIntervalSince1970)) }
+  public let nonce = UUID().uuidString
+  public var timestamp: String { String(Int(Date().timeIntervalSince1970)) }
   
   public init(accessToken: String, accessSecretToken: String, oAuthToken: String? = nil, oAuthSecretToken: String = "", httpMethod: String, url: URL, queries: [String: String] = [:]) {
     self.accessToken = accessToken
