@@ -10,7 +10,6 @@ import Foundation
   import CryptoKit
 #endif
 
-
 public struct OAuth1 {
   private let accessToken: String
   private let accessSecretToken: String
@@ -90,10 +89,9 @@ public struct OAuth1 {
     return signatureString
   }
   
-  func bearerToken() -> String {
-    let values =  [
-      "oauth_signature": signature(key: key, message: baseString),
-    ]
+  public func bearerToken() -> String {
+    let signature = signature(key: key, message: baseString)
+    let values =  ["oauth_signature": signature]
     
     let parameters = parameters.merging(values) { (current, _) in current }
     let joinedParameters = parameters.map{"\($0.urlEncoded)=\"\($1.urlEncoded)\""}
