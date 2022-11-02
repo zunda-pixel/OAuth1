@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import HTTPMethod
 
 #if os(Linux) || os(Windows)
   import Crypto
@@ -18,7 +19,7 @@ public struct OAuth1 {
   public let oAuthSecretToken: String
   
   public let url: URL
-  public let httpMethod: String
+  public let httpMethod: HTTPMethod
   public let queries: [String: String]
   
   public let oAuthVersion = "1.0"
@@ -27,7 +28,7 @@ public struct OAuth1 {
   public let nonce = UUID().uuidString
   public var timestamp: String { String(Int(Date().timeIntervalSince1970)) }
   
-  public init(accessToken: String, accessSecretToken: String, oAuthToken: String? = nil, oAuthSecretToken: String = "", httpMethod: String, url: URL, queries: [String: String] = [:]) {
+  public init(accessToken: String, accessSecretToken: String, oAuthToken: String? = nil, oAuthSecretToken: String = "", httpMethod: HTTPMethod, url: URL, queries: [String: String] = [:]) {
     self.accessToken = accessToken
     self.accessSecretToken = accessSecretToken
     
@@ -66,7 +67,7 @@ public struct OAuth1 {
   
   private var baseParameters: [String] {
     [
-      httpMethod,
+      httpMethod.rawValue,
       url.absoluteString,
       parameterString,
     ]
