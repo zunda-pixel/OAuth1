@@ -3,7 +3,13 @@
 //
 
 import Foundation
-import CryptoKit
+
+#if os(Linux) || os(Windows)
+  import Crypto
+#else
+  import CryptoKit
+#endif
+
 
 public struct OAuth1 {
   private let accessToken: String
