@@ -10,7 +10,8 @@ final class OAuth1Tests: XCTestCase {
 
     let oAuth1 = OAuth1(accessToken: accessToken, accessSecretToken: accessSecretToken, httpMethod: .post, url: url)
     
-    let bearerToken = oAuth1.bearerToken()
-    print(bearerToken)
+    let authorization = oAuth1.authorization()
+    
+    print(authorization)
   }
 }

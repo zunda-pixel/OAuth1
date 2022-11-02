@@ -90,7 +90,7 @@ public struct OAuth1 {
     return signatureString
   }
   
-  public func bearerToken() -> String {
+  public func authorization() -> String {
     let signature = signature(key: key, message: baseString)
     let values =  ["oauth_signature": signature]
     
